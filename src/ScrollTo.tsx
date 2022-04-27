@@ -4,6 +4,9 @@ export interface ScrollToProps {
     shouldScrollTo?: boolean,
     delay?: number,
     children?: React.ReactNode,
+
+    position?: 'start' | 'center' | 'end' | 'nearest',
+    scrollMargin?: string | number,
 }
 
 /**
@@ -16,6 +19,8 @@ export const ScrollTo = (props: ScrollToProps) => {
         shouldScrollTo = true,
         delay = 20,
         children,
+        position = 'center',
+        scrollMargin,
     } = props;
     const scrollToRef = React.useRef<HTMLDivElement>(null);
 
@@ -36,13 +41,13 @@ export const ScrollTo = (props: ScrollToProps) => {
 
             scrollToRef.current.scrollIntoView({
                 behavior: 'smooth',
-                block: 'center',
+                block: position,
             });
         }, delay);
     }, [shouldScrollTo, delay]);
 
     return (
-        <div ref={shouldScrollTo? scrollToRef: null} className={`scroll-to ${shouldScrollTo ? 'scroll-to-active' : ''}`}>
+        <div ref={shouldScrollTo ? scrollToRef : null} className={`scroll-to ${shouldScrollTo ? 'scroll-to-active' : ''}`} style={{ scrollMargin: scrollMargin }}>
             {children}
         </div>
         );
