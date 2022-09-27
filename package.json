@@ -1,6 +1,6 @@
 {
   "name": "@scottbamford/react-scrollto",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "React component that can scroll to itself using scrollInView when its shouldScrollTo prop is true.",
   "main": "dist/lib/commonjs/index.js",
   "module": "dist/lib/esm/index.js",
